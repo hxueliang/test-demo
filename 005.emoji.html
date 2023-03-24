@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>emoji</title>
+</head>
+<body>
+  <script>
+    document.write(String.fromCodePoint("0x1F468")); // 表情1
+    document.write(String.fromCodePoint("0x1F4BB")); // 表情2
+    document.write(String.fromCodePoint('0x1F468', '0x200D', '0x1F4BB')); // 表情1 + 表情2
+    document.write(String.fromCodePoint('0x1F468', '0x1F3FC')); // 表情1 + 颜色
+  </script>
+</body>
+</html>
