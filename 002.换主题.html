@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <script src="https://cdn.jsdelivr.net/npm/vue@2.7.14/dist/vue.js"></script>
+  <style>
+    [theme='light'] {  /*白天主题*/
+      --bgColor:#fff;  /*白天大的背景颜色*/ 
+      --textColor:#000;  /*白天文本颜色*/ 
+      --titleColor:blue;  /*白天标题颜色*/ 
+    } 
+    
+    [theme='dark'] {   /*晚上主题*/
+      --bgColor:#000;   /*晚上大的背景颜色*/
+      --textColor:#fff;  /*晚上文本颜色*/
+      --titleColor:yellow;  /*晚上标题颜色*/ 
+    }
+
+    .daytime {
+      width: 100%;
+      height: 1000px;
+      background-color: var(--bgColor);  
+    }
+
+    .btn {
+      color: red;
+      width: 200px;
+      height: 30px;
+      line-height: 30px;
+      text-align: center;
+      cursor: pointer;
+    }
+
+    .poetry {
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translateX(-50%) translateY(-50%);
+    }
+
+    h1 {
+      color: var(--titleColor);
+    }
+    
+    p {
+      color: var(--textColor);
+    }
+  </style>
+  <title>002.换theme</title>
+</head>
+<body>
+  <div id="app">
+    <div class="daytime">
+      <div class="btn"
+        @click="changeLight">点击切换白天主题</div>
+      <div class="btn"
+        @click="changeDark">点击切换晚上主题</div>
+      <div class="poetry">
+        <h1>沁园春·雪</h1>
+        <p>北国风光，千里冰封，万里雪飘。</p>
+        <p>望长城内外，惟余莽莽；大河上下，顿失滔滔。</p>
+        <p>山舞银蛇，原驰蜡象，欲与天公试比高。</p>
+        <p>须晴日，看红装素裹，分外妖娆。</p>
+        <p>江山如此多娇，引无数英雄竞折腰。</p>
+        <p>惜秦皇汉武，略输文采；唐宗宋祖，稍逊风骚。</p>
+        <p>一代天骄，成吉思汗，只识弯弓射大雕。</p>
+        <p>俱往矣，数风流人物，还看今朝。</p>
+      </div>
+    </div>
+  </div>
+</body>
+
+
+<script>
+  new Vue({
+    el: '#app',
+    data() {
+      return {}
+    },
+    created() {
+      let theme = localStorage.getItem('theme') ? JSON.parse(localStorage.getItem('theme')) : 'light'
+      document.documentElement.setAttribute('theme', theme)
+    },
+    methods: {
+      changeLight() {
+        document.documentElement.setAttribute('theme', 'light')
+        localStorage.setItem('theme', JSON.stringify('light'))
+      },
+      changeDark() {
+        console.log();
+        document.documentElement.setAttribute('theme', 'dark')
+        localStorage.setItem('theme', JSON.stringify('dark'))
+      }
+    }
+  })
+</script>
+</html>
